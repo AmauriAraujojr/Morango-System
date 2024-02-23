@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { ILoginFormData } from "../components/Forms/LoginForm";
 import { Api } from "../services";
 import { jwtDecode } from "jwt-decode";
@@ -12,18 +12,22 @@ interface IUserProvider {
 
 interface IUserContext {
   userLogin: (formData: ILoginFormData) => Promise<void>;
+  user: IUser | undefined
 }
 
-// interface IUser{
-//     id:number
-//     username:string
-//     email:string
-// }
+interface IUser {
+  id: number;
+  username: string;
+  email: string;
+}
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProvider) => {
   const navigate = useNavigate();
+
+  const [user, setUser] = useState<IUser>();
+
 
   const userLogin = async (formData: ILoginFormData) => {
     try {
@@ -41,8 +45,26 @@ export const UserProvider = ({ children }: IUserProvider) => {
     }
   };
 
+  const UserAuth = async (id: number) => {
+    try {
+      const response = await Api.get(`users/${id}/`);
+
+      setUser(response.data);
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const id = localStorage.getItem("@USERID");
+
+    if (id) {
+      UserAuth(Number(id));
+    }
+  }, []);
+
   return (
-    <UserContext.Provider value={{ userLogin }}>
+    <UserContext.Provider value={{ userLogin,user }}>
       {children}
     </UserContext.Provider>
   );

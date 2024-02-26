@@ -7,12 +7,12 @@ import { GlobalStyles } from "./styles/GlobalStyle"
 const App=()=> {
 
   return (
-    <>
+    <div className="app">
+     <Header/>
     <ToastContainer/>
     <GlobalStyles/>
-     <Header/>
      <RounterMain/>
-    </>
+    </div>
   )
 }
 

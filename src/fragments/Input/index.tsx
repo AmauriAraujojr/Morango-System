@@ -1,5 +1,6 @@
 import { InputHTMLAttributes, forwardRef } from "react"
 import { FieldError } from "react-hook-form";
+import { StyledInput } from "../../styles/input";
 
 
 
@@ -11,14 +12,14 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   }export const Input = forwardRef<HTMLInputElement,InputProps>(({label,error,...props},ref) => {
 
     return( 
-        <div>  
+        <StyledInput>  
               {label ? <label>{label}</label> : null}
 
 
            <input  ref={ref} {...props} />
            {error ? <p className="error">{error.message}</p> : null}
 
-        </div>
+        </StyledInput>
 
 
     )

@@ -5,6 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../../../fragments/Input";
 import { useNavigate } from "react-router-dom";
+import { StyledFormLogin } from "./style";
 
 export interface ILoginFormData {
   username: string;
@@ -31,7 +32,7 @@ export const LoginForm = () => {
   };
   const navigate = useNavigate();
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <StyledFormLogin onSubmit={handleSubmit(submit)}>
       <Input
         label="Nome"
         type="text"
@@ -51,6 +52,6 @@ export const LoginForm = () => {
       <button>Login</button>
 
       <button onClick={() => navigate("/")}>Home</button>
-    </form>
+    </StyledFormLogin>
   );
 };

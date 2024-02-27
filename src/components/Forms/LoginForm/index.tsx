@@ -32,26 +32,28 @@ export const LoginForm = () => {
   };
   const navigate = useNavigate();
   return (
-    <StyledFormLogin onSubmit={handleSubmit(submit)}>
-      <Input
-        label="Nome"
-        type="text"
-        placeholder="Username"
-        {...register("username")}
-        error={errors.username}
-      />
+    <StyledFormLogin>
+      <form onSubmit={handleSubmit(submit)}>
+        <Input
+          label="Nome"
+          type="text"
+          placeholder="Username"
+          {...register("username")}
+          error={errors.username}
+        />
 
-      <Input
-        label="Senha"
-        type="password"
-        placeholder="password"
-        {...register("password")}
-        error={errors.password}
-      />
+        <Input
+          label="Senha"
+          type="password"
+          placeholder="password"
+          {...register("password")}
+          error={errors.password}
+        />
 
-      <button>Login</button>
+        <button>Login</button>
 
-      <button onClick={() => navigate("/")}>Home</button>
+        <button onClick={() => navigate("/")}>Home</button>
+      </form>
     </StyledFormLogin>
   );
 };

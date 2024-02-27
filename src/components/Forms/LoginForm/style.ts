@@ -10,12 +10,11 @@ export const StyledFormLogin = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 32px;
-  /* margin: 50px; */
   form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    .esqueci {
+    /* .esqueci {
       color: var(--color-grey-2);
       align-self: flex-end;
       cursor: pointer;
@@ -23,8 +22,8 @@ export const StyledFormLogin = styled.div`
     .notAcount {
       color: var(--color-grey-2);
       align-self: center;
-    }
-  button{
+    } */
+    button {
       width: 100%;
     }
   }

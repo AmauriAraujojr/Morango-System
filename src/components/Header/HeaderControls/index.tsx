@@ -1,24 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../providers/User.context";
 import { StyledHeaderControls } from "./style";
-import { StyledBigButton } from "../../../styles/buttons";
-import { ButtonBigText } from "../../../styles/typhography";
+import {  StyledMediunButton } from "../../../styles/buttons";
+import {   ButtonMediumText, HeadingSix600 } from "../../../styles/typhography";
 
 export const HeaderControls = () => {
   const navigate = useNavigate();
 
   const { user } = useContext(UserContext);
+  useEffect(() => {}, [user]);
+
+  
 
   return (
-    <StyledHeaderControls>
+    <StyledHeaderControls className="controls">
       {user ? (
-        <h3>Bem Vindo {user?.username}</h3>
+        <div className="controls_box">
+
+          <HeadingSix600 className="welcome">Olá!</HeadingSix600>  
+          <HeadingSix600 className="username">{user?.username}</HeadingSix600>
+          <StyledMediunButton color="outline2"><ButtonMediumText>Sair</ButtonMediumText></StyledMediunButton>
+        </div>
       ) : (
         <div className="controls_box">
-          <StyledBigButton color="outline2" onClick={() => navigate("/login")}><ButtonBigText>Entrar</ButtonBigText></StyledBigButton >
+          <StyledMediunButton color="outline2" onClick={() => navigate("/login")}><ButtonMediumText>Entrar</ButtonMediumText></StyledMediunButton >
 
-          <StyledBigButton color="outline2"><ButtonBigText>Cadastrar</ButtonBigText></StyledBigButton>
+          <StyledMediunButton color="outline2"><ButtonMediumText>Cadastrar</ButtonMediumText></StyledMediunButton>
         </div>
       )}
     </StyledHeaderControls>

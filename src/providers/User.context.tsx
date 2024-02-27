@@ -4,7 +4,6 @@ import { Api } from "../services";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { AxiosError } from "axios";
 
 interface IUserProvider {
   children: React.ReactNode;
@@ -12,7 +11,7 @@ interface IUserProvider {
 
 interface IUserContext {
   userLogin: (formData: ILoginFormData) => Promise<void>;
-  user: IUser | undefined
+  user: IUser | undefined;
 }
 
 interface IUser {
@@ -28,10 +27,9 @@ export const UserProvider = ({ children }: IUserProvider) => {
 
   const [user, setUser] = useState<IUser>();
 
-
   const userLogin = async (formData: ILoginFormData) => {
     try {
-      const response = await Api.post("login/", formData);
+      const response = await Api.post("users/login/", formData);
 
       localStorage.setItem("@TOKEN", response.data.access);
 
@@ -39,6 +37,13 @@ export const UserProvider = ({ children }: IUserProvider) => {
 
       localStorage.setItem("@USERID", jwt.user_id);
 
+      const newUser = {
+        id: jwt.user_id,
+        username: jwt.user_username,
+        email: jwt.user_email,
+      };
+
+      setUser(newUser);
       navigate("/");
     } catch (error: any) {
       toast.error(error.response.data.detail);
@@ -64,7 +69,7 @@ export const UserProvider = ({ children }: IUserProvider) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ userLogin,user }}>
+    <UserContext.Provider value={{ userLogin, user }}>
       {children}
     </UserContext.Provider>
   );

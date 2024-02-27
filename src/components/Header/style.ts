@@ -29,5 +29,23 @@ export const StyledHeader = styled.header`
         color: var(--color-brand2);
       }
     }
+    .controls{
+      display: none;
+    }
+    .menuHamburguer{
+  color:var(--color-brand2)
+  
+ }
+
+
+  @media (min-width:590px) {
+   
+    .controls{
+    display:flex;
+  }
+  .menuHamburguer{
+    display: none;
+  }
+  }
   }
 `;

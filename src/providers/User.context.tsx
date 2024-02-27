@@ -11,7 +11,9 @@ interface IUserProvider {
 
 interface IUserContext {
   userLogin: (formData: ILoginFormData) => Promise<void>;
-  user: IUser | undefined;
+  user: IUser | null |undefined;
+  userLogout: () => void
+
 }
 
 interface IUser {
@@ -25,7 +27,7 @@ export const UserContext = createContext({} as IUserContext);
 export const UserProvider = ({ children }: IUserProvider) => {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState<IUser>();
+  const [user, setUser] = useState<IUser|null|undefined>();
 
   const userLogin = async (formData: ILoginFormData) => {
     try {
@@ -68,8 +70,15 @@ export const UserProvider = ({ children }: IUserProvider) => {
     }
   }, []);
 
+  const userLogout=()=>{
+    localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@USERID");
+    setUser(null);
+    navigate("/");
+  }
+
   return (
-    <UserContext.Provider value={{ userLogin, user }}>
+    <UserContext.Provider value={{ userLogin, user,userLogout }}>
       {children}
     </UserContext.Provider>
   );

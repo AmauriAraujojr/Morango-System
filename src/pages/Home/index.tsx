@@ -1,12 +1,12 @@
-export const HomePage=()=>{
+import { useContext } from "react";
+import { NavBar } from "../../components/NavBar";
+import { UserContext } from "../../providers/User.context";
 
-    return(
-      <>
-      
-        <main>
-
-          <h1>home</h1>
-        </main>
-      </>
-    )
-}
+export const HomePage = () => {
+  const { user } = useContext(UserContext);
+  return (
+    <>
+      <main>{user ? <NavBar /> : null}</main>
+    </>
+  );
+};

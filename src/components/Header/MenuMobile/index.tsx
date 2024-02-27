@@ -1,10 +1,11 @@
 import { HeaderControls } from "../HeaderControls"
+import { StyledMenuMobile } from "./style"
 
 export const MenuMobile=()=>{
 
     return(
-        <div>
+        <StyledMenuMobile>
             <HeaderControls/>
-        </div>
+        </StyledMenuMobile>
     )
 }

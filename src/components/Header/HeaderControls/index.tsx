@@ -5,10 +5,12 @@ import { StyledHeaderControls } from "./style";
 import {  StyledMediunButton } from "../../../styles/buttons";
 import {   ButtonMediumText, HeadingSix600 } from "../../../styles/typhography";
 
+
+
 export const HeaderControls = () => {
   const navigate = useNavigate();
 
-  const { user } = useContext(UserContext);
+  const { user,userLogout} = useContext(UserContext);
   useEffect(() => {}, [user]);
 
   
@@ -20,7 +22,7 @@ export const HeaderControls = () => {
 
           <HeadingSix600 className="welcome">Olá!</HeadingSix600>  
           <HeadingSix600 className="username">{user?.username}</HeadingSix600>
-          <StyledMediunButton color="outline2"><ButtonMediumText>Sair</ButtonMediumText></StyledMediunButton>
+          <StyledMediunButton color="outline2" onClick={()=>userLogout()}><ButtonMediumText>Sair</ButtonMediumText></StyledMediunButton>
         </div>
       ) : (
         <div className="controls_box">

@@ -14,6 +14,7 @@ padding: 10px;
     align-items: center;
     justify-content: center;
 
+
     .welcome{
         color:var(--color-grey-6);
         

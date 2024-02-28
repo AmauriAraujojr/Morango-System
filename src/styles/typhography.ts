@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const HeadingOne700 = styled.h1`
-  font-family: "Lexend", sans-serif;
+  font-family: "Anta", sans-serif;
   font-size: 2.75rem;
   font-weight: 700;
   line-height: 56px;
+  color: var(--color-brand2);
+
 `;
 export const HeadingTwo600 = styled.h2`
   font-family: "Lexend", sans-serif;

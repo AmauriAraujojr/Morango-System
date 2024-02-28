@@ -13,11 +13,11 @@ export const buttonStyles = css`
       case "outline2":
         return css`
           background-color: var(--color-grey-10);
-          border-color: var(--color-grey-0);
-          color: var(--color-grey-0);
+          border-color: var(--color-brand1);
+          color: var(--color-brand1);
           &:hover {
-            background-color: var(--color-grey-1);
-            border-color: var(--color-grey-1);
+            background-color: var(--color-brand1);
+            border-color: var(--color-brand1);
             color: var(--color-grey-10);
           }
         `;
@@ -34,11 +34,11 @@ export const buttonStyles = css`
         `;
       case "sucess":
         return css`
-          background-color: var(--color-sucess-3);
-          border-color: var(--color-sucess-3);
-          color: var(--color-sucess-1);
+          background-color: var(--color-brand3);
+          border-color: var(--color-brand3);
+          color: var(--color-grey-10);
           &:hover {
-            background-color: var(--color-sucess-2);
+            background-color: var(--color-brand2);
             border-color: var(--color-sucess-2);
           }
         `;

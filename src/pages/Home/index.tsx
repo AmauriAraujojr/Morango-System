@@ -7,12 +7,12 @@ import { MenuMobile } from "../../components/Header/MenuMobile";
 export const HomePage = () => {
   const [openMobile, setOpenMobile] = useState(false);
 
-  const { user } = useContext(UserContext);
+  const { user,openMenu } = useContext(UserContext);
   return (
     <>
       <Header setOpenMobile={setOpenMobile} openMobile={openMobile} />;
       {openMobile ? <MenuMobile /> : null}
-      <main>{user ? <NavBar /> : null}</main>
+      <main>{user && !openMenu ?<NavBar /> : null}</main>
     </>
   );
 };

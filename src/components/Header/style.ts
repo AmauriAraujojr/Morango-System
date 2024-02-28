@@ -38,7 +38,7 @@ export const StyledHeader = styled.header`
  }
 
 
-  @media (min-width:590px) {
+  @media (min-width:640px) {
    
     .controls{
     display:flex;

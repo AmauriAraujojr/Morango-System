@@ -13,6 +13,8 @@ interface IUserContext {
   userLogin: (formData: ILoginFormData) => Promise<void>;
   user: IUser | null |undefined;
   userLogout: () => void
+  openMenu: boolean
+  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>
 
 }
 
@@ -28,6 +30,8 @@ export const UserProvider = ({ children }: IUserProvider) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState<IUser|null|undefined>();
+  const [openMenu, setOpenMenu] = useState(false);
+
 
   const userLogin = async (formData: ILoginFormData) => {
     try {
@@ -78,7 +82,7 @@ export const UserProvider = ({ children }: IUserProvider) => {
   }
 
   return (
-    <UserContext.Provider value={{ userLogin, user,userLogout }}>
+    <UserContext.Provider value={{ userLogin, user,userLogout ,openMenu,setOpenMenu}}>
       {children}
     </UserContext.Provider>
   );

@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../../../fragments/Input";
 import { useNavigate } from "react-router-dom";
 import { StyledFormLogin } from "./style";
+import { StyledBigButton } from "../../../styles/buttons";
+import { BodyTwo400, ButtonBigText, HeadingFour600 } from "../../../styles/typhography";
 
 export interface ILoginFormData {
   username: string;
@@ -25,14 +27,16 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<ILoginFormData>({ resolver: zodResolver(LoginSchema) });
 
-  const { userLogin } = useContext(UserContext);
+  const { userLogin,setOpenMenu } = useContext(UserContext);
 
   const submit: SubmitHandler<ILoginFormData> = (formData) => {
     userLogin(formData);
+    setOpenMenu(false)
   };
   const navigate = useNavigate();
   return (
     <StyledFormLogin>
+      <HeadingFour600 className="text_center">Acesso</HeadingFour600>
       <form onSubmit={handleSubmit(submit)}>
         <Input
           label="Nome"
@@ -50,10 +54,15 @@ export const LoginForm = () => {
           error={errors.password}
         />
 
-        <button>Login</button>
+        <StyledBigButton color="sucess" ><ButtonBigText>Entrar</ButtonBigText></StyledBigButton>
 
-        <button onClick={() => navigate("/")}>Home</button>
       </form>
+      <BodyTwo400 className="text_center">Não é Registrado?</BodyTwo400>
+
+      <StyledBigButton color="outline2"><ButtonBigText>Crie uma nova conta</ButtonBigText></StyledBigButton>
+
+
+
     </StyledFormLogin>
   );
 };

@@ -1,54 +1,47 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { StyledSlider } from "./style";
-import { StyledContainer } from "../../styles/grid";
+import { EffectCreative } from "swiper/modules";
+import { HeadingOne700,BodyOne400, ButtonBigText } from "../../styles/typhography";
+import { StyledBigButton } from "../../styles/buttons";
+import { useContext } from "react";
+import { ContentContext } from "../../providers/ContentContext";
 
 export const Slider = () => {
-  const data = [
-    {
-      id: "1",
-      image:
-        "https://todosaumasovoz.com.br/site/wp-content/uploads/2020/12/oportunidades_estudantes-Profissoes-do-futuro-700x400.jpg",
-      description: "ajajajjaja",
-    },
-    {
-      id: "2",
-      image: "https://www.udop.com.br/u_img/noticias/2021/27_07_2021_agro.png",
-      description: "ppooooooo",
-    },
-    {
-      id: "3",
-      image:
-        "https://ruralpecuaria.com.br/painel/img/noticias/365/noticias_1406233184.jpg",
-      description: "iiiii",
-    },
-    {
-      id: "4",
-      image:
-        "https://www.agroplanning.com.br/wp-content/uploads/2018/06/morango_1.jpg",
-      description: "adijdaujaui",
-    },
-  ];
+  
+  const{data}=useContext(ContentContext)
   return (
-    <StyledContainer>
-      <StyledSlider>
-        <Swiper
-          className="swiper"
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
-          slidesPerView={1}
-          pagination={{ clickable: true }}
-        >
-          {data.map((item) => {
-            return (
-              <SwiperSlide key={item.id} className="slide">
-                  <p>{item.description}</p>
-                <div className="box">
-                  <img src={item.image} alt="Slider" className="slide-item" />
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </StyledSlider>
-    </StyledContainer>
+    <StyledSlider>
+      <Swiper
+        grabCursor={true}
+        effect="creative"
+        creativeEffect={{
+          prev: {
+            shadow: true,
+            translate: [0, 0, -400],
+          },
+          next: {
+            translate: ["100%", 0, 0],
+          },
+        }}
+        modules={[EffectCreative]}
+        className="swiper"
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+      >
+        {data.map((item) => {
+          return (
+            <SwiperSlide key={item.id} className="slide">
+              <div className="info_box">
+                <HeadingOne700>{item.title}</HeadingOne700>
+                <BodyOne400>{item.description}</BodyOne400>
+                <StyledBigButton color="sucess"><ButtonBigText>Saiba mais</ButtonBigText></StyledBigButton>
+              </div>
+                <img src={item.image} alt="Slider" className="slide-item" />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </StyledSlider>
   );
 };

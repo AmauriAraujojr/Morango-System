@@ -13,10 +13,8 @@ export const HomePage = () => {
     <>
       <Header setOpenMobile={setOpenMobile} openMobile={openMobile} />;
       {openMobile ? <MenuMobile /> : null}
-      <main>
         {user && !openMenu ? <NavBar /> : null}
         <Slider />
-      </main>
     </>
   );
 };

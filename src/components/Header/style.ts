@@ -4,7 +4,7 @@ export const StyledHeader = styled.header`
   background-color: var(--color-brand1);
   display: flex;
   align-items: center;
-  border-bottom: 3px solid var(--color-brand2);
+  border-bottom: 2px solid var(--color-brand2);
   width: 100%;
 
   .flexBox {

@@ -37,18 +37,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100vw;
         /* justify-content: space-between; */
         height:100vh; 
-        .slide{
-           width:100%;
-           max-width: 1440px;
-           margin:0 auto;
-
-           .slide-item{
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-
-           }
-        }
+       
         
         }
 `;

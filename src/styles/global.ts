@@ -31,13 +31,23 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .app{
+        
+        width: 100vw;
+        justify-content:flex-start; 
+        height:100vh; 
+         overflow-x:hidden;
+        margin:0 auto;
+         /* display: flex;
+        flex-direction: column;
+        align-items: center; */
+        
+        }
+
+        .home{
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100vw;
-        /* justify-content: space-between; */
-        height:100vh; 
-       
-        
+        gap:20px;
+overflow-y:auto
         }
 `;

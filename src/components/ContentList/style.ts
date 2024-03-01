@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const StyledContentList = styled.section`
-  max-width: 100vw;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  gap:20px;
-  color:var(--color-grey-2);
-  /* margin-top:50px; */
+  gap: 20px;
+  color: var(--color-grey-2);
+  max-width: 100%;
 
   .carrocel {
-    overflow-x: auto;
+    overflow: auto;
     overflow-y: hidden;
+    display: flex;
   }
+
   ul {
     display: flex;
     align-items: center;
@@ -26,6 +26,10 @@ export const StyledContentList = styled.section`
       gap: 48px;
       width: 100%;
       padding: 0;
+    }
+    .carrocel {
+      overflow: hidden;
+      overflow-y: hidden;
     }
   }
   @media (min-width: 1500px) {

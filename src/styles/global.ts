@@ -26,28 +26,34 @@ export const GlobalStyle = createGlobalStyle`
 
     body{
         background: var(--color-grey-6);
+        padding:0;
+        margin:0;
        
-
     }
+  
 
     .app{
         
         width: 100vw;
         justify-content:flex-start; 
         height:100vh; 
-         overflow-x:hidden;
         margin:0 auto;
-         /* display: flex;
-        flex-direction: column;
-        align-items: center; */
-        
-        }
-
-        .home{
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+    
+    .home{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap:20px;
-overflow-y:auto
-        }
+    
+   
+    }
+
+::-webkit-scrollbar{
+    width: 5px;
+   
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--color-brand2);
+}
 `;

@@ -12,11 +12,11 @@ export const HomePage = () => {
   const { user, openMenu } = useContext(UserContext);
   return (
     <div className="home">
-      <Header setOpenMobile={setOpenMobile} openMobile={openMobile} />;
+      <Header setOpenMobile={setOpenMobile} openMobile={openMobile} />
       {openMobile ? <MenuMobile /> : null}
-        {user && !openMenu ? <NavBar /> : null}
-        <Slider />
-        <ContentList/>
+      {user && !openMenu ? <NavBar /> : null}
+      <Slider />
+      <ContentList />
     </div>
   );
 };

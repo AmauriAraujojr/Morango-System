@@ -5,18 +5,16 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--color-brand2);
-  width: 99.3vw;
+  width: 100vw;
   max-width:100vw;
-  position:fixed;
-  z-index: 1;
-
+  height:80px;
+ 
   .flexBox {
-    padding: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
     width: 100%;
+    
 
     .logo_box {
       display: flex;

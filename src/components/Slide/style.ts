@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const StyledSlider = styled.div`
-  /* width: 100vw; */
   max-width: 100vw;
   margin: 0 auto;
   z-index: 0;
-  height: 65vh;
 
   .slide {
     position: relative;
+
   }
   .info_box {
     background-color: var(--color-brand4);

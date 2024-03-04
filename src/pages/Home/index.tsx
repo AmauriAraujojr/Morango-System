@@ -17,8 +17,8 @@ export const HomePage = () => {
       {openMobile ? <MenuMobile /> : null}
       {user && !openMenu ? <NavBar /> : null}
       <Slider />
-      <ContentList />
       <InfoSection/>
+      <ContentList />
 
     </div>
   );

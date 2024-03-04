@@ -7,9 +7,25 @@ interface IContentProvider {
 
 interface IContentContext {
     data: Idata[]
-    weather: boolean
+    weather: IWeather | null
     
   
+  }
+
+  interface IWeather{
+    name:string
+    main:{
+      temp:number,
+      temp_max:number,
+      temp_min:number,
+      pressure:number,
+      humidity:number
+    }
+    weather:[{
+      description:string,
+      icon:string
+    }]
+    
   }
 
   export interface Idata{
@@ -55,7 +71,7 @@ export const ContentProvider = ({ children }: IContentProvider) => {
             introduction:"Nossa plataforma de compra e venda de morangos online, uma solução inovadora que conecta produtores, distribuidores e consumidores, facilitando transações seguras e eficientes no mercado de morangos.",
           }
       ];
-      const[weather,setWeather]=useState(false)
+      const[weather,setWeather]=useState<IWeather|null>(null)
 
       const[location, setLocation]=useState(false)
 

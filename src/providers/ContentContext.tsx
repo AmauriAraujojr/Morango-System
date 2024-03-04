@@ -1,4 +1,5 @@
-import { createContext } from "react";
+import { Fragment, createContext, useEffect, useState } from "react";
+import { ApiClima } from "../services";
 
 interface IContentProvider {
     children: React.ReactNode;
@@ -6,6 +7,7 @@ interface IContentProvider {
 
 interface IContentContext {
     data: Idata[]
+    weather: boolean
     
   
   }
@@ -53,10 +55,49 @@ export const ContentProvider = ({ children }: IContentProvider) => {
             introduction:"Nossa plataforma de compra e venda de morangos online, uma solução inovadora que conecta produtores, distribuidores e consumidores, facilitando transações seguras e eficientes no mercado de morangos.",
           }
       ];
+      const[weather,setWeather]=useState(false)
 
+      const[location, setLocation]=useState(false)
+
+      const getWeather=async(lat:any,long:any)=>{
+        try {
+          const response= await ApiClima.get("weather",{
+            params:{
+              lat:lat,
+              lon:long,
+              appid:"0f6e90193ef04e7217dc38831c8f36a8",
+              lang:'pt',
+              units:'metric'
+            }
+          })
+          setWeather(response.data)
+          
+        } catch (error) {
+          console.log(error)
+        }
+
+      }
+      useEffect(()=>{
+        navigator.geolocation.getCurrentPosition((position)=>{
+          getWeather(position.coords.latitude, position.coords.longitude)
+          setLocation(true)
+        })
+      },[])
+
+      if(!location){
+        return(
+          <Fragment>
+            Você precisa habilitar a localição
+          </Fragment>
+        )
+
+      }
+
+
+     
 
     return(
-        <ContentContext.Provider value={{data}}>
+        <ContentContext.Provider value={{data,weather}}>
             {children}
         </ContentContext.Provider>
     )

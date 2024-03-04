@@ -5,6 +5,7 @@ import { Header } from "../../components/Header";
 import { MenuMobile } from "../../components/Header/MenuMobile";
 import { Slider } from "../../components/Slide";
 import { ContentList } from "../../components/ContentList";
+import { InfoSection } from "../../components/InfoSection";
 
 export const HomePage = () => {
   const [openMobile, setOpenMobile] = useState(false);
@@ -17,6 +18,8 @@ export const HomePage = () => {
       {user && !openMenu ? <NavBar /> : null}
       <Slider />
       <ContentList />
+      <InfoSection/>
+
     </div>
   );
 };

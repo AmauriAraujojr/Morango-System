@@ -6,7 +6,9 @@ export const StyledTemcard = styled.div`
   background-color: var(--color-brand4);
   padding: 10px;
   width: 500px;
-  opacity: 60%;
+  opacity: 85%;
+  max-width:50%;
+
   color: var(--color-grey-6);
   li {
     list-style: none;

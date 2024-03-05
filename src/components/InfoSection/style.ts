@@ -1,15 +1,28 @@
 import styled from "styled-components";
 
-export const StyledInfos=styled.section`
-
-background-color:var(--color-brand1);
-
-
-.flexBox{
+export const StyledInfos = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding:10px;
+  .flexBox{
     display: flex;
     align-items: center;
-    width:100%;
-    justify-content: space-around;
-}
+  flex-direction:column;
+  justify-content: center;
+  width: 100%;
+  gap:2px;
 
-`
+
+
+  }
+  @media (min-width: 755px) {
+
+    .flexBox {
+      display: flex;
+      justify-content: center;
+      flex-direction:row;
+    }
+  }
+`;

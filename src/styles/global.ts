@@ -5,8 +5,7 @@ export const GlobalStyle = createGlobalStyle`
         --color-brand1:#2f4d01;
         --color-brand2:#bfd904;
         --color-brand3:#4e7f02;
-        --color-brand4:#101b00
-;
+        --color-brand4:#101b00;
 
         --color-grey-0:#0B0D0D;
         --color-grey-1:#212529;
@@ -56,4 +55,6 @@ export const GlobalStyle = createGlobalStyle`
 ::-webkit-scrollbar-thumb{
     background-color: var(--color-brand2);
 }
+
+
 `;

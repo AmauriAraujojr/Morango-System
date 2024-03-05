@@ -5,7 +5,7 @@ export const StyledContentList = styled.section`
   flex-direction: column;
   gap: 20px;
   color: var(--color-grey-2);
-  max-width: 100%;
+  width: 100%;
 
   .carrocel {
     overflow: auto;
@@ -20,24 +20,17 @@ export const StyledContentList = styled.section`
     gap: 30px;
   }
   @media (min-width: 1000px) {
+    
     ul {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 48px;
-      width: 100%;
-      padding: 0;
+  
+      flex-wrap:wrap;
+      justify-content:space-around;
+
     }
     .carrocel {
       overflow: hidden;
       overflow-y: hidden;
     }
   }
-  @media (min-width: 1500px) {
-    ul {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 48px;
-      width: 100%;
-    }
-  }
+ 
 `;

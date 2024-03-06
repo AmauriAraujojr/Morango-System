@@ -44,7 +44,7 @@ export const GlobalStyle = createGlobalStyle`
     .home{
         display: flex;
         flex-direction: column;
-    
+        justify-content: space-between;   
    
     }
 

@@ -7,6 +7,9 @@ export const StyledContentList = styled.section`
   width: 100%;
   gap: 20px;
   align-items: center;
+  margin-top:20px;
+  margin-bottom:60px;
+
   .carrocel {
     overflow: auto;
     overflow-y: hidden;

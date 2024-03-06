@@ -4,6 +4,7 @@ export const StyledSlider = styled.div`
   max-width: 100vw;
   margin: 0 auto;
   z-index: 0;
+  background-color:var(--color-brand1);
 
   .slide {
     position: relative;
@@ -34,7 +35,7 @@ export const StyledSlider = styled.div`
 
   .slide-item {
     width: 100%;
-    height: 630px;
+    height: 700px;
     object-fit: cover;
   }
 `;

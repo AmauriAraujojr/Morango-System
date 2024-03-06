@@ -8,9 +8,10 @@ export const StyledCotaCard=styled.div`
   width: 500px;
   opacity: 85%;
   color: var(--color-grey-6);
-  gap: 30px;
-  max-width:50%;
+  gap: 22px;
+  max-width:100%;
   text-transform:capitalize;
+  height: 230px;
 .button_box{
     display: flex;
     align-items: center;

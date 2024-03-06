@@ -7,14 +7,14 @@ export const StyledTemcard = styled.div`
   padding: 10px;
   width: 500px;
   opacity: 85%;
-  max-width:50%;
-
+  max-width: 100%;
+  height: 230px;
   color: var(--color-grey-6);
   li {
     list-style: none;
   }
   gap: 20px;
-  text-transform:capitalize;
+  text-transform: capitalize;
 
   .title_box {
     display: flex;
@@ -54,7 +54,7 @@ export const StyledTemcard = styled.div`
     flex-direction: column;
     gap: 10px;
   }
-  .data{
-    text-align:center
+  .data {
+    text-align: center;
   }
 `;

@@ -12,7 +12,7 @@ interface HeaderProps {
 
 export const Header = ({ setOpenMobile, openMobile }: HeaderProps) => {
   return (
-    <StyledHeader>
+    <StyledHeader id="header">
       <StyledContainer>
         <div className="flexBox">
           <div className="logo_box">

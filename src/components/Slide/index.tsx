@@ -27,7 +27,6 @@ export const Slider = () => {
         className="swiper"
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         slidesPerView={1}
-        pagination={{ clickable: true }}
       >
         {data.map((item) => {
           return (

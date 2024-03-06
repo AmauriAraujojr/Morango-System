@@ -20,7 +20,8 @@ export const Footer = () => {
             <h2>Cultivo </h2> <GiStrawberry className="logo" />
             <h2>Inteligente</h2>
           </div>
-          <HeadingSeven600>2024 © CULTIVO INTELIGENTE. Todos os direitos reservados.</HeadingSeven600>
+          <HeadingSeven600>2024
+           © CULTIVO INTELIGENTE. Todos os direitos reservados.</HeadingSeven600>
        
         </div>
       </StyledContainer>

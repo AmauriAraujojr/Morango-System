@@ -59,7 +59,7 @@ export const LoginForm = () => {
       </form>
       <BodyTwo400 className="text_center">Não é Registrado?</BodyTwo400>
 
-      <StyledBigButton color="outline2"><ButtonBigText>Crie uma nova conta</ButtonBigText></StyledBigButton>
+      <StyledBigButton color="outline2" onClick={()=>navigate('/register')}><ButtonBigText>Crie uma nova conta</ButtonBigText></StyledBigButton>
 
 
 

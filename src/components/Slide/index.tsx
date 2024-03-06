@@ -1,14 +1,21 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { StyledSlider } from "./style";
 import { EffectCreative } from "swiper/modules";
-import { HeadingOne700,BodyOne400, ButtonBigText } from "../../styles/typhography";
+import {
+  HeadingOne700,
+  BodyOne400,
+  ButtonBigText,
+} from "../../styles/typhography";
 import { StyledBigButton } from "../../styles/buttons";
 import { useContext } from "react";
 import { ContentContext } from "../../providers/ContentContext";
+import { UserContext } from "../../providers/User.context";
+import { useNavigate } from "react-router-dom";
 
 export const Slider = () => {
-  
-  const{data}=useContext(ContentContext)
+  const { data, getContentAndGoToAbout } = useContext(ContentContext);
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
   return (
     <StyledSlider>
       <Swiper
@@ -34,9 +41,25 @@ export const Slider = () => {
               <div className="info_box">
                 <HeadingOne700>{item.title}</HeadingOne700>
                 <BodyOne400>{item.description}</BodyOne400>
-                <StyledBigButton color="sucess"><ButtonBigText>Saiba mais</ButtonBigText></StyledBigButton>
+                {!user ? (
+                  <StyledBigButton
+                    color="sucess"
+                    onClick={() => navigate("/register")}
+                  >
+                    <ButtonBigText>Criar conta</ButtonBigText>
+                  </StyledBigButton>
+                ) : null}
+
+                {user && item.id != "2" ? (
+                  <StyledBigButton
+                    color="sucess"
+                    onClick={() => getContentAndGoToAbout(item)}
+                  >
+                    <ButtonBigText>Saiba mais</ButtonBigText>
+                  </StyledBigButton>
+                ) : null}
               </div>
-                <img src={item.image} alt="Slider" className="slide-item" />
+              <img src={item.image} alt="Slider" className="slide-item" />
             </SwiperSlide>
           );
         })}

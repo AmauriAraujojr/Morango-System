@@ -1,5 +1,6 @@
 import { Fragment, createContext, useEffect, useState } from "react";
 import { ApiClima } from "../services";
+import { useNavigate } from "react-router-dom";
 
 interface IContentProvider {
   children: React.ReactNode;
@@ -9,6 +10,9 @@ interface IContentContext {
   data: Idata[];
   weather: IWeather | null;
   date:string
+  currentContent: Idata | undefined
+  setCurrentContent: React.Dispatch<React.SetStateAction<Idata | undefined>>
+  getContentAndGoToAbout: (par: Idata) => void
 }
 
 interface IWeather {
@@ -83,6 +87,10 @@ export const ContentProvider = ({ children }: IContentProvider) => {
 
   const [date,setDate]=useState<string>("")
 
+  const [currentContent,setCurrentContent]=useState<Idata|undefined>(undefined)
+
+  const navigate=useNavigate()
+
   const getWeather = async (lat: any, long: any) => {
     try {
       const response = await ApiClima.get("weather", {
@@ -132,9 +140,13 @@ export const ContentProvider = ({ children }: IContentProvider) => {
   if (!location) {
     return <Fragment>Você precisa habilitar a localição</Fragment>;
   }
+  const getContentAndGoToAbout=(par:Idata)=>{
+    setCurrentContent(par)
+    navigate('/about')
+}
 
   return (
-    <ContentContext.Provider value={{ data, weather,date }}>
+    <ContentContext.Provider value={{ data, weather,date,currentContent,setCurrentContent,getContentAndGoToAbout }}>
       {children}
     </ContentContext.Provider>
   );

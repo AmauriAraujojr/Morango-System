@@ -14,7 +14,7 @@ export const CotaCard = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <StyledCotaCard>
+    <StyledCotaCard id="cotaCard">
       <div className="title_box">
         <HeadingSix600>Cotação do Morango em: {date}</HeadingSix600>
       </div>

@@ -48,6 +48,17 @@ export const GlobalStyle = createGlobalStyle`
    
     }
 
+    .registerPage{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: var(--color-brand4);
+        width:100vw;
+        opacity:92%;
+
+    }
+
 ::-webkit-scrollbar{
     width: 5px;
    

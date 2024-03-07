@@ -4,6 +4,7 @@ import { Api } from "../services";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { IRegisterFormData } from "../components/Forms/RegisterForm";
 
 interface IUserProvider {
   children: React.ReactNode;
@@ -11,11 +12,13 @@ interface IUserProvider {
 
 interface IUserContext {
   userLogin: (formData: ILoginFormData) => Promise<void>;
-  user: IUser | null |undefined;
-  userLogout: () => void
-  openMenu: boolean
-  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>
-
+  user: IUser | null | undefined;
+  userLogout: () => void;
+  openMenu: boolean;
+  registerUser: (formdata: IRegisterFormData) => Promise<void>;
+  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  openMobile: boolean
+  setOpenMobile: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface IUser {
@@ -29,8 +32,9 @@ export const UserContext = createContext({} as IUserContext);
 export const UserProvider = ({ children }: IUserProvider) => {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState<IUser|null|undefined>();
+  const [user, setUser] = useState<IUser | null | undefined>();
   const [openMenu, setOpenMenu] = useState(false);
+  const [openMobile, setOpenMobile] = useState(false);
 
 
   const userLogin = async (formData: ILoginFormData) => {
@@ -74,15 +78,38 @@ export const UserProvider = ({ children }: IUserProvider) => {
     }
   }, []);
 
-  const userLogout=()=>{
+  const userLogout = () => {
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USERID");
     setUser(null);
     navigate("/");
-  }
+  };
+
+  const registerUser = async (formdata: IRegisterFormData) => {
+    try {
+      await Api.post("users/", formdata);
+
+      toast.success("Cadastro realizado com sucesso");
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <UserContext.Provider value={{ userLogin, user,userLogout ,openMenu,setOpenMenu}}>
+    <UserContext.Provider
+      value={{
+        userLogin,
+        user,
+        userLogout,
+        openMenu,
+        setOpenMenu,
+        registerUser,
+        openMobile,
+        setOpenMobile
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

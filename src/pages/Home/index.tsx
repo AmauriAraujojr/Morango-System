@@ -9,12 +9,11 @@ import { InfoSection } from "../../components/InfoSection";
 import { Footer } from "../../components/Footer";
 
 export const HomePage = () => {
-  const [openMobile, setOpenMobile] = useState(false);
 
-  const { user, openMenu } = useContext(UserContext);
+  const { user, openMenu,openMobile } = useContext(UserContext);
   return (
     <div className="home">
-      <Header setOpenMobile={setOpenMobile} openMobile={openMobile} />
+      <Header />
       {openMobile ? <MenuMobile /> : null}
       {user && !openMenu ? <NavBar /> : null}
       <Slider />

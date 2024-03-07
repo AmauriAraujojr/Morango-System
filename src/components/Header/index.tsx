@@ -1,16 +1,17 @@
+import { useContext } from "react";
 import { StyledContainer } from "../../styles/grid";
 import { HeadingFive600 } from "../../styles/typhography";
 import { HeaderControls } from "./HeaderControls";
 import { StyledHeader } from "./style";
 import { GiStrawberry } from "react-icons/gi";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { UserContext } from "../../providers/User.context";
 
-interface HeaderProps {
-  setOpenMobile: React.Dispatch<React.SetStateAction<boolean>>;
-  openMobile: boolean;
-}
 
-export const Header = ({ setOpenMobile, openMobile }: HeaderProps) => {
+
+export const Header = () => {
+
+  const{openMobile,setOpenMobile}=useContext(UserContext)
   return (
     <StyledHeader id="header">
       <StyledContainer>

@@ -1,4 +1,4 @@
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { BodyOne600 } from "../../styles/typhography";
 import { StyledUserControls } from "./style";
 import { useContext } from "react";
@@ -13,6 +13,13 @@ export const UserControls = () => {
     setOpenMenu(false);
   };
 
+  const navigate=useNavigate()
+
+  const backToHome=()=>{
+
+    setOpenMenu(false)
+    navigate('/')
+  }
   return (
     <StyledUserControls>
       <div role="dialog" className="modal">
@@ -24,12 +31,12 @@ export const UserControls = () => {
               </Link>
             </li>
             <li>
-              <a href="#cotaCard">
-                <BodyOne600 className="text" onClick={() => setOpenMenu(false)}>
+              <li>
+                <BodyOne600 className="text" onClick={() => backToHome()}>
                   {" "}
                   Cotação em tempo real
                 </BodyOne600>
-              </a>
+              </li>
             </li>
             <li>
               <Link to="#">

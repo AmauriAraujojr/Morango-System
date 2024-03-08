@@ -17,8 +17,6 @@ interface IUserContext {
   openMenu: boolean;
   registerUser: (formdata: IRegisterFormData) => Promise<void>;
   setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
-  openMobile: boolean
-  setOpenMobile: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface IUser {
@@ -34,8 +32,6 @@ export const UserProvider = ({ children }: IUserProvider) => {
 
   const [user, setUser] = useState<IUser | null | undefined>();
   const [openMenu, setOpenMenu] = useState(false);
-  const [openMobile, setOpenMobile] = useState(false);
-
 
   const userLogin = async (formData: ILoginFormData) => {
     try {
@@ -106,8 +102,6 @@ export const UserProvider = ({ children }: IUserProvider) => {
         openMenu,
         setOpenMenu,
         registerUser,
-        openMobile,
-        setOpenMobile
       }}
     >
       {children}

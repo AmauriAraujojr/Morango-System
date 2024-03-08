@@ -1,23 +1,19 @@
-import { ContentContext, Idata } from "../../../providers/ContentContext";
-import { StyledBigButton } from "../../../styles/buttons";
+import { useContext } from "react";
+import { Idata } from "../../../providers/ContentContext";
 import { StyledContainer } from "../../../styles/grid";
 import {
   BodyOne400,
-  BodyTwo400,
-  ButtonBigText,
   HeadingFour600,
-  HeadingSix600,
 } from "../../../styles/typhography";
 import { CotaCard } from "../../InfoSection/CotaCard";
 import { StyledContentCard } from "./style";
-import { useContext } from "react";
+import { UserContext } from "../../../providers/User.context";
 
 interface ICardProps {
   iten: Idata;
 }
 export const ContentCard = ({ iten }: ICardProps) => {
-  const { getContentAndGoToAbout } = useContext(ContentContext);
-
+  const { user } = useContext(UserContext);
   return (
     <>
       {iten.id != "2" ? (
@@ -29,13 +25,6 @@ export const ContentCard = ({ iten }: ICardProps) => {
             <div className="content_box">
               <HeadingFour600>{iten.title}</HeadingFour600>
               <BodyOne400>{iten.context}</BodyOne400>
-
-              <StyledBigButton
-                color="outline2"
-                onClick={() => getContentAndGoToAbout(iten)}
-              >
-                <ButtonBigText>Saiba mais</ButtonBigText>
-              </StyledBigButton>
             </div>
           </StyledContainer>
         </StyledContentCard>

@@ -10,9 +10,7 @@ interface IContentContext {
   data: Idata[];
   weather: IWeather | null;
   date: string;
-  currentContent: Idata | undefined;
-  setCurrentContent: React.Dispatch<React.SetStateAction<Idata | undefined>>;
-  getContentAndGoToAbout: (par: Idata) => void;
+ 
 }
 
 interface IWeather {
@@ -87,9 +85,7 @@ export const ContentProvider = ({ children }: IContentProvider) => {
 
   const [date, setDate] = useState<string>("");
 
-  const [currentContent, setCurrentContent] = useState<Idata | undefined>(
-    undefined
-  );
+
 
   const navigate = useNavigate();
 
@@ -144,10 +140,7 @@ export const ContentProvider = ({ children }: IContentProvider) => {
   if (!location) {
     return <Fragment>Você precisa habilitar a localição</Fragment>;
   }
-  const getContentAndGoToAbout = (par: Idata) => {
-    setCurrentContent(par);
-    navigate("/about");
-  };
+
 
   return (
     <ContentContext.Provider
@@ -155,9 +148,7 @@ export const ContentProvider = ({ children }: IContentProvider) => {
         data,
         weather,
         date,
-        currentContent,
-        setCurrentContent,
-        getContentAndGoToAbout,
+       
       }}
     >
       {children}

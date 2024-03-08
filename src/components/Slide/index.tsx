@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { FaAnglesDown } from "react-icons/fa6";
 
 export const Slider = () => {
-  const { data, getContentAndGoToAbout } = useContext(ContentContext);
+  const { data} = useContext(ContentContext);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   return (
@@ -54,15 +54,6 @@ export const Slider = () => {
                     onClick={() => navigate("/register")}
                   >
                     <ButtonBigText>Criar conta</ButtonBigText>
-                  </StyledBigButton>
-                ) : null}
-
-                {user && item.id != "2" ? (
-                  <StyledBigButton
-                    color="sucess"
-                    onClick={() => getContentAndGoToAbout(item)}
-                  >
-                    <ButtonBigText>Saiba mais</ButtonBigText>
                   </StyledBigButton>
                 ) : null}
               </div>

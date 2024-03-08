@@ -9,10 +9,10 @@ interface IContentProvider {
 interface IContentContext {
   data: Idata[];
   weather: IWeather | null;
-  date:string
-  currentContent: Idata | undefined
-  setCurrentContent: React.Dispatch<React.SetStateAction<Idata | undefined>>
-  getContentAndGoToAbout: (par: Idata) => void
+  date: string;
+  currentContent: Idata | undefined;
+  setCurrentContent: React.Dispatch<React.SetStateAction<Idata | undefined>>;
+  getContentAndGoToAbout: (par: Idata) => void;
 }
 
 interface IWeather {
@@ -51,7 +51,7 @@ export const ContentProvider = ({ children }: IContentProvider) => {
     {
       id: "1",
       image:
-        "https://blog.broto.com.br/wp-content/uploads/2022/03/irrigacao-por-aspersao.jpeg",
+        "https://cdn.leonardo.ai/users/39f915ce-ef3a-4ed6-b850-78417e926a0d/generations/64b2af00-8d03-415a-9b98-9f4708b49850/Default_irrigation_farming_with_sun_behind_based_on_httpscdnle_3.jpg",
       description: "Mantenha sua lavoura irrigada com apenas um 'CLICK'",
       title: "Irrigação Inteligente",
       introduction:
@@ -62,7 +62,7 @@ export const ContentProvider = ({ children }: IContentProvider) => {
     {
       id: "2",
       image:
-        "https://waldineypassos.com.br/wp-content/uploads/2018/08/morango-juazeiro.jpg",
+        "https://cdn.leonardo.ai/users/39f915ce-ef3a-4ed6-b850-78417e926a0d/generations/f37c9c74-b515-4b0c-bfb9-f2285a4ef67f/Default_strawberry_farm_with_sun_behind_based_on_httpscdnleona_0.jpg",
       description: "Veja a cotação do morango em tempo real",
       title: "Cotação em tempo real",
       context: "",
@@ -72,7 +72,7 @@ export const ContentProvider = ({ children }: IContentProvider) => {
     {
       id: "3",
       image:
-        "https://blog.cresol.com.br/wp-content/uploads/2019/08/produtor-rural-olhando-para-o-campo.jpg",
+        "https://fly.storage.tigris.dev/pai-images/993dc693d5fd43fc938b1a2598154ff2.jpeg",
       description: "Negocie seu produto sem sair de sua lavoura",
       title: "Compra e venda online",
       context:
@@ -85,11 +85,13 @@ export const ContentProvider = ({ children }: IContentProvider) => {
 
   const [location, setLocation] = useState(false);
 
-  const [date,setDate]=useState<string>("")
+  const [date, setDate] = useState<string>("");
 
-  const [currentContent,setCurrentContent]=useState<Idata|undefined>(undefined)
+  const [currentContent, setCurrentContent] = useState<Idata | undefined>(
+    undefined
+  );
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const getWeather = async (lat: any, long: any) => {
     try {
@@ -107,46 +109,57 @@ export const ContentProvider = ({ children }: IContentProvider) => {
       console.log(error);
     }
   };
-  
-    const getDate=()=>{
-      const meses = [
-        "Jan",
-        "Fev",
-        "Mar",
-        "Abr",
-        "Mai",
-        "Jun",
-        "Jul",
-        "Ago",
-        "Set",
-        "Out",
-        "Nov",
-        "Dez",
-      ];
-      let date=new Date()
-      let formatDate=`${date.getDate()} ${meses[date.getMonth()]} ${date.getFullYear()}`
-  
-      setDate(formatDate)
-    }
+
+  const getDate = () => {
+    const meses = [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ];
+    let date = new Date();
+    let formatDate = `${date.getDate()} ${
+      meses[date.getMonth()]
+    } ${date.getFullYear()}`;
+
+    setDate(formatDate);
+  };
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       getWeather(position.coords.latitude, position.coords.longitude);
       setLocation(true);
     });
 
-    getDate()
+    getDate();
   }, []);
 
   if (!location) {
     return <Fragment>Você precisa habilitar a localição</Fragment>;
   }
-  const getContentAndGoToAbout=(par:Idata)=>{
-    setCurrentContent(par)
-    navigate('/about')
-}
+  const getContentAndGoToAbout = (par: Idata) => {
+    setCurrentContent(par);
+    navigate("/about");
+  };
 
   return (
-    <ContentContext.Provider value={{ data, weather,date,currentContent,setCurrentContent,getContentAndGoToAbout }}>
+    <ContentContext.Provider
+      value={{
+        data,
+        weather,
+        date,
+        currentContent,
+        setCurrentContent,
+        getContentAndGoToAbout,
+      }}
+    >
       {children}
     </ContentContext.Provider>
   );

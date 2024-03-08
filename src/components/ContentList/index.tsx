@@ -9,18 +9,12 @@ export const ContentList = () => {
   const { data } = useContext(ContentContext);
 
   return (
-    <StyledContainer>
-      <StyledContentList>
-        <HeadingFour600>Pricipais Serviços</HeadingFour600>
-        <div className="carrocel">
-          <ul>
-            {data.map((iten) => (
-              <ContentCard key={iten.id} iten={iten} />
-            ))}
-          </ul>
-        </div>
-        
-      </StyledContentList>
-    </StyledContainer>
+    <StyledContentList id="list">
+      <ul>
+        {data.map((iten) => (
+          <ContentCard key={iten.id} iten={iten} />
+        ))}
+      </ul>
+    </StyledContentList>
   );
 };

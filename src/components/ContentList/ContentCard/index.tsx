@@ -1,10 +1,14 @@
 import { ContentContext, Idata } from "../../../providers/ContentContext";
 import { StyledBigButton } from "../../../styles/buttons";
+import { StyledContainer } from "../../../styles/grid";
 import {
+  BodyOne400,
   BodyTwo400,
   ButtonBigText,
+  HeadingFour600,
   HeadingSix600,
 } from "../../../styles/typhography";
+import { CotaCard } from "../../InfoSection/CotaCard";
 import { StyledContentCard } from "./style";
 import { useContext } from "react";
 
@@ -15,23 +19,40 @@ export const ContentCard = ({ iten }: ICardProps) => {
   const { getContentAndGoToAbout } = useContext(ContentContext);
 
   return (
-    <StyledContentCard>
-      <div className="box_img">
-        <img src={iten.image} alt="Imagem" />
-      </div>
-      <div className="content_box">
-        <HeadingSix600>{iten.title}</HeadingSix600>
-        <BodyTwo400>{iten.introduction}</BodyTwo400>
+    <>
+      {iten.id != "2" ? (
+        <StyledContentCard>
+          <StyledContainer>
+            <div className="box_img">
+              <img src={iten.image} alt="Imagem" />
+            </div>
+            <div className="content_box">
+              <HeadingFour600>{iten.title}</HeadingFour600>
+              <BodyOne400>{iten.context}</BodyOne400>
 
-        {iten.id != "2" ? (
-          <StyledBigButton
-            color="outline2"
-            onClick={() => getContentAndGoToAbout(iten)}
-          >
-            <ButtonBigText>Saiba mais</ButtonBigText>
-          </StyledBigButton>
-        ) : null}
-      </div>
-    </StyledContentCard>
+              <StyledBigButton
+                color="outline2"
+                onClick={() => getContentAndGoToAbout(iten)}
+              >
+                <ButtonBigText>Saiba mais</ButtonBigText>
+              </StyledBigButton>
+            </div>
+          </StyledContainer>
+        </StyledContentCard>
+      ) : (
+        <StyledContentCard className="invert">
+          <StyledContainer>
+            <div className="content_box">
+              <HeadingFour600>{iten.title}</HeadingFour600>
+              <BodyOne400>{iten.introduction}</BodyOne400>
+              <CotaCard />
+            </div>
+            <div className="box_img">
+              <img src={iten.image} alt="Imagem" />
+            </div>
+          </StyledContainer>
+        </StyledContentCard>
+      )}
+    </>
   );
 };

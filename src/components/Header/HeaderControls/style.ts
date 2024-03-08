@@ -5,7 +5,7 @@ export const StyledHeaderControls = styled.header`
   align-items: center;
   justify-content: center;
   padding: 10px;
-  background-color: var(--color-brand1);
+  /* background-color: var(--color-brand1); */
   position: relative;
 
   .controls_box {

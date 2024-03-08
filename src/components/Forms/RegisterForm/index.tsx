@@ -13,6 +13,7 @@ import {
   HeadingFour600,
 } from "../../../styles/typhography";
 import { GiStrawberry } from "react-icons/gi";
+import { LogoType } from "../../../fragments/Logo";
 
 export interface IRegisterFormData {
   username: string;
@@ -41,10 +42,7 @@ export const RegisterForm = () => {
   const navigate = useNavigate();
   return (
     <StyledFormLogin>
-      <div className="logo_box">
-        <h2>Cultivo </h2> <GiStrawberry className="logo" />
-        <h2>Inteligente</h2>
-      </div>
+      <LogoType/>
       <HeadingFour600 className="text_center">Cadastre-se</HeadingFour600>
       <form onSubmit={handleSubmit(submit)}>
         <Input

@@ -14,6 +14,7 @@ export const StyledInfos = styled.section`
     gap: 2px;
     width: 100%;
   }
+
   @media (min-width: 755px) {
     .flexBox {
       display: flex;

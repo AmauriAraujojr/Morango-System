@@ -9,25 +9,9 @@ export const StyledFormLogin = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 32px;
-  opacity: 60%;
+  opacity: 80%;
   color:var(--color-grey-10);
   border:1px solid var(--color-brand2);
-  .logo_box {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    justify-content: center;
-    h2 {
-      color: var(--color-brand2);
-      font-family: "Anta", sans-serif;
-      font-weight: 400;
-    }
-    .logo {
-      font-size: 35px;
-      color: var(--color-brand2);
-    }
-  }
-
   .text_center {
     text-align: center;
   }

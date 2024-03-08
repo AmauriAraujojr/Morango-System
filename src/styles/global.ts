@@ -66,6 +66,12 @@ export const GlobalStyle = createGlobalStyle`
 ::-webkit-scrollbar-thumb{
     background-color: var(--color-brand2);
 }
+.invert{
+    background-color: var(--color-brand1);
+    .content_box{
+        color:var(--color-grey-10)
+    }
 
+}
 
 `;

@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { ContentContext } from "../../providers/ContentContext";
 import { UserContext } from "../../providers/User.context";
 import { useNavigate } from "react-router-dom";
+import { FaAnglesDown } from "react-icons/fa6";
 
 export const Slider = () => {
   const { data, getContentAndGoToAbout } = useContext(ContentContext);
@@ -38,6 +39,12 @@ export const Slider = () => {
         {data.map((item) => {
           return (
             <SwiperSlide key={item.id} className="slide">
+              <div className="down_div">
+                <a href="#list">
+                  <FaAnglesDown className="down" />
+                </a>
+              </div>
+
               <div className="info_box">
                 <HeadingOne700>{item.title}</HeadingOne700>
                 <BodyOne400>{item.description}</BodyOne400>
@@ -59,6 +66,7 @@ export const Slider = () => {
                   </StyledBigButton>
                 ) : null}
               </div>
+
               <img src={item.image} alt="Slider" className="slide-item" />
             </SwiperSlide>
           );

@@ -10,13 +10,12 @@ import { Footer } from "../../components/Footer";
 
 export const HomePage = () => {
 
-  const { user, openMenu,openMobile } = useContext(UserContext);
+  const { user, openMenu} = useContext(UserContext);
   return (
     <div className="home">
       <Header />
-      {openMobile ? <MenuMobile /> : null}
-      {user && !openMenu ? <NavBar /> : null}
       <Slider />
+      {user && !openMenu ? <NavBar /> : null}
 
       <InfoSection />
 

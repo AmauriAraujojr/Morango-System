@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { IRegisterFormData } from "../components/Forms/RegisterForm";
+import { IService } from "./ServicesContext";
 
 interface IUserProvider {
   children: React.ReactNode;
@@ -23,6 +24,7 @@ interface IUser {
   id: number;
   username: string;
   email: string;
+  services:IService[]
 }
 
 export const UserContext = createContext({} as IUserContext);
@@ -43,13 +45,8 @@ export const UserProvider = ({ children }: IUserProvider) => {
 
       localStorage.setItem("@USERID", jwt.user_id);
 
-      const newUser = {
-        id: jwt.user_id,
-        username: jwt.user_username,
-        email: jwt.user_email,
-      };
+      UserAuth(Number(jwt.user_id));
 
-      setUser(newUser);
       navigate("/");
     } catch (error: any) {
       toast.error(error.response.data.detail);

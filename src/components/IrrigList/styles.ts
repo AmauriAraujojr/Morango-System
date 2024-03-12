@@ -6,7 +6,7 @@ export const StyledIrrigList = styled.section`
   display: flex;
   flex-direction: column;
   gap: 25px;
-  color:var(--color-brand1);
+  color: var(--color-brand1);
   ul {
     display: grid;
     gap: 20px;
@@ -22,5 +22,33 @@ export const StyledIrrigList = styled.section`
     @media (min-width: 1452px) {
       grid-template-columns: repeat(5, 1fr);
     }
+  }
+  .pageBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-direction: column;
+
+    .pageNumber {
+      text-align: center;
+      display: flex;
+      gap: 5px;
+      color: var(--color-brand2);
+
+      .pageNumberOpacity {
+        opacity: 50%;
+      }
+    }
+
+    .perPageH1 {
+      color: var(--color-brand3);
+    }
+  }
+  .not {
+    max-width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
   }
 `;

@@ -1,32 +1,49 @@
-import React, { createContext, useState,} from "react";
+import React, { createContext, useState } from "react";
 
 interface IServiceProvider {
   children: React.ReactNode;
 }
 
 interface IServiceContext {
+  currentPage: number;
+  cardPerPage: IService[];
+  totalPages: number;
+  setCardPerPage: React.Dispatch<React.SetStateAction<IService[]>>;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  setTotalPages: React.Dispatch<React.SetStateAction<number>>;
+  openModal: boolean
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 
 }
 
 export interface IService {
-    id:number,
-    turnOn:string,
-    turnOff:string,
-    active:boolean
-
+  id: number;
+  turnOn: string;
+  turnOff: string;
+  active: boolean;
 }
 
 export const ServiceContext = createContext({} as IServiceContext);
 
 export const ServiceProvider = ({ children }: IServiceProvider) => {
-    const[services,setServices]=useState<IService|undefined>(undefined)
+  const [services, setServices] = useState<IService | undefined>(undefined);
 
-  
-    
+  const [cardPerPage, setCardPerPage] = useState([] as IService[]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const[openModal,setOpenModal]=useState(false)
+
   return (
     <ServiceContext.Provider
       value={{
-      
+        cardPerPage,
+        currentPage,
+        totalPages,
+        setCardPerPage,
+        setCurrentPage,
+        setTotalPages,
+        openModal,
+        setOpenModal
       }}
     >
       {children}

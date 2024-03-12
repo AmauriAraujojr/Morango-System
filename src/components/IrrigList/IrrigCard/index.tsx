@@ -53,19 +53,18 @@ export const IrrigCard = ({ service }: IIrrigProps) => {
 
     let hourOff = "";
     if (dateOff.getHours() < 10) {
-      hourOff = `0${dateOff.getHours()}`;
+      hourOff = `0${dateOff.getHours() - 3}`;
     } else {
-      hour = String(dateOff.getHours());
+      hourOff = String(dateOff.getHours() - 3);
     }
 
     let minutesOff = "";
     if (dateOff.getMinutes() < 10) {
-      minutes = `0${dateOff.getMinutes()}`;
+      minutesOff = `0${dateOff.getMinutes()}`;
     } else {
       minutesOff = String(dateOff.getMinutes());
     }
     let hourOffForm = `${hourOff} : ${minutesOff} : ${dateOff.getUTCSeconds()}`;
-
     setOff(hourOffForm);
   };
 

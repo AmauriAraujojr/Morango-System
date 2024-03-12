@@ -73,6 +73,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
 }
+.system_page{
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+}
 
 
 `;

@@ -13,6 +13,7 @@ export const StyledSystemContent = styled.div`
     color: var(--color-grey-10);
     align-items: center;
     height: 450px;
+    justify-content:space-between;
     .content {
       margin-top: 100px;
       height: 250px;

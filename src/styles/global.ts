@@ -20,6 +20,10 @@ export const GlobalStyle = createGlobalStyle`
         --color-grey-10:#FDFDFD;
         --color-withe-fixed:#FFFFFF;
 
+        --color-alert-1:#CD2B31;
+        --color-alert-2:#FDD8D8;
+
+
      
     }
 

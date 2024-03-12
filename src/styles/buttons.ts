@@ -24,12 +24,14 @@ export const buttonStyles = css`
 
       case "alert":
         return css`
-          background-color: var(--color-alert-3);
-          border-color: var(--color-alert-3);
-          color: var(--color-alert-1);
+          background-color: var(--color-alert-1);
+          border-color: var(--color-alert-1);
+          color: var(--color-alert-2);
           &:hover {
             background-color: var(--color-alert-2);
             border-color: var(--color-alert-2);
+            color: var(--color-alert-1);
+
           }
         `;
       case "sucess":

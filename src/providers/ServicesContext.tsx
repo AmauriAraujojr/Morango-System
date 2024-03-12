@@ -13,7 +13,8 @@ interface IServiceContext {
   setTotalPages: React.Dispatch<React.SetStateAction<number>>;
   openModal: boolean
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
-
+  active: boolean
+  setActive: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface IService {
@@ -27,6 +28,8 @@ export const ServiceContext = createContext({} as IServiceContext);
 
 export const ServiceProvider = ({ children }: IServiceProvider) => {
   const [services, setServices] = useState<IService | undefined>(undefined);
+  const [active, setActive] = useState(false);
+
 
   const [cardPerPage, setCardPerPage] = useState([] as IService[]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,7 +46,9 @@ export const ServiceProvider = ({ children }: IServiceProvider) => {
         setCurrentPage,
         setTotalPages,
         openModal,
-        setOpenModal
+        setOpenModal,
+        active,
+        setActive
       }}
     >
       {children}

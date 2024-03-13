@@ -1,54 +1,70 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../fragments/Input";
 import { StyledBigButton } from "../../styles/buttons";
-import { ButtonBigText } from "../../styles/typhography";
+import { ButtonBigText, HeadingThree600 } from "../../styles/typhography";
 import { ServiceContext } from "../../providers/ServicesContext";
+import { StyledTimer } from "./styled";
 
 export interface IFormData {
   time: number;
 }
 export const Timer = () => {
-  const [timer, setTimer] = useState(0);
+  const { setActive, timer, setTimer, active } = useContext(ServiceContext);
+
   const minutes = Math.floor(timer / 60);
   const seconds = timer % 60;
 
-  const {setActive}=useContext(ServiceContext)
 
-  useEffect(() => {
+  const getTime = () => {
     if (timer === 0) {
-      setActive(false)
+      setActive(false);
       return;
     } else {
       setTimeout(() => {
-        setTimer(timer - 1)
+        setTimer(timer - 1);
       }, 1000);
-
-      
     }
-    
-  }, [timer]);
+  };
+  useEffect(() => {
+    if (!active) {
+      setTimer(0);
+      return;
+    }
+
+    getTime();
+  }, [timer, active]);
 
   const { register, handleSubmit } = useForm<IFormData>({});
 
   const submit: SubmitHandler<IFormData> = (formData) => {
     setTimer(Number(formData.time) * 60);
 
-    setActive(true)
-
+    setActive(true);
   };
 
   return (
-    <div>
+    <StyledTimer>
+      
       <form onSubmit={handleSubmit(submit)}>
-        <Input type="number" {...register("time")} />
+        <Input
+          type="number"
+          {...register("time")}
+          className="timer_input"
+          placeholder="1"
+          />
 
         <StyledBigButton color="outline2">
           <ButtonBigText>Ativar</ButtonBigText>
         </StyledBigButton>
       </form>
-      <span>{String(minutes).padStart(2, "0")}</span>:
-      <span>{String(seconds).padStart(2, "0")}</span>
-    </div>
+
+          {active ? (
+            <HeadingThree600 className="time">
+              {String(minutes).padStart(2, "0")} :{" "}
+              {String(seconds).padStart(2, "0")}
+            </HeadingThree600>
+          ) : null}
+    </StyledTimer>
   );
 };

@@ -18,14 +18,18 @@ export const StyledContentCard = styled.div`
   .content_box {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 100%;
     padding: 20px;
     color: var(--color-grey-2);
     width: 70%;
     gap: 20px;
-    button {
-      align-self: end;
+    .title {
+      text-transform: capitalize;
+    }
+    .parag{
+      text-align: justify;
     }
   }
-`;
+  
+  `;

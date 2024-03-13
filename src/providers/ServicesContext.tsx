@@ -15,6 +15,8 @@ interface IServiceContext {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
   active: boolean
   setActive: React.Dispatch<React.SetStateAction<boolean>>
+  timer: number;
+  setTimer: React.Dispatch<React.SetStateAction<number>>
 }
 
 export interface IService {
@@ -29,6 +31,8 @@ export const ServiceContext = createContext({} as IServiceContext);
 export const ServiceProvider = ({ children }: IServiceProvider) => {
   const [services, setServices] = useState<IService | undefined>(undefined);
   const [active, setActive] = useState(false);
+  const [timer, setTimer] = useState(0);
+
 
 
   const [cardPerPage, setCardPerPage] = useState([] as IService[]);
@@ -48,7 +52,9 @@ export const ServiceProvider = ({ children }: IServiceProvider) => {
         openModal,
         setOpenModal,
         active,
-        setActive
+        setActive,
+        timer,
+        setTimer
       }}
     >
       {children}

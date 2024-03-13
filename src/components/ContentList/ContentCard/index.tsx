@@ -23,8 +23,8 @@ export const ContentCard = ({ iten }: ICardProps) => {
               <img src={iten.image} alt="Imagem" />
             </div>
             <div className="content_box">
-              <HeadingFour600>{iten.title}</HeadingFour600>
-              <BodyOne400>{iten.context}</BodyOne400>
+              <HeadingFour600 className="title">{iten.title}</HeadingFour600>
+              <BodyOne400 className="parag">{iten.context}</BodyOne400>
             </div>
           </StyledContainer>
         </StyledContentCard>
@@ -32,8 +32,8 @@ export const ContentCard = ({ iten }: ICardProps) => {
         <StyledContentCard className="invert">
           <StyledContainer>
             <div className="content_box">
-              <HeadingFour600>{iten.title}</HeadingFour600>
-              <BodyOne400>{iten.introduction}</BodyOne400>
+              <HeadingFour600 className="title">{iten.title}</HeadingFour600>
+              <BodyOne400 className="parag">{iten.introduction}</BodyOne400>
               <CotaCard />
             </div>
             <div className="box_img">

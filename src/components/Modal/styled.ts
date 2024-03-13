@@ -10,14 +10,15 @@ export const StyledModal = styled.div`
   z-index: 1;
   
   .modal {
-    opacity: 85%;
-    width: 80%;
+    opacity: 95%;
+    width: 100%;
     background-color: var(--color-brand4);
     color:var(--color-grey-10);
     padding:20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     gap:50px;
     .atention{
       color: var(--color-brand2)
@@ -27,6 +28,15 @@ export const StyledModal = styled.div`
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      flex-direction: column;
+      
     }
+    @media(min-width: 790px){
+      max-width:80%;
+      .button_box{
+        flex-direction: row;
+      }
+    }
+
   }
 `;

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StyledBigButton } from "../../styles/buttons";
 import { StyledContainer } from "../../styles/grid";
 import {
@@ -9,10 +9,11 @@ import {
 import { StyledModal } from "./styled";
 import { ServiceContext } from "../../providers/ServicesContext";
 import { Timer } from "../Timer";
+import { SucessMsg } from "../../fragments/SucessMsg";
+import { TempCard } from "../InfoSection/TempCard";
 
 export const Modal = () => {
-
-  const { setOpenModal,active } = useContext(ServiceContext);
+  const { setOpenModal, active, setActive } = useContext(ServiceContext);
 
 
   return (
@@ -21,25 +22,28 @@ export const Modal = () => {
         <div role="dialog" className="modal">
           <HeadingTwo600 className="atention">Atenção !</HeadingTwo600>
           <HeadingThree600>
-            Indique o tempo que a irrigação ficará ligada e clique em "Ativar"
+            Indique o tempo em "minutos" que a irrigação ficará ligada e clique
+            em "Ativar"
           </HeadingThree600>
+            <TempCard/>
+          <div className="button_box">
             <Timer />
-        
 
             {active ? (
-              <StyledBigButton color="alert">
+              <StyledBigButton color="alert" onClick={() => setActive(false)}>
                 <ButtonBigText>Desativar</ButtonBigText>
               </StyledBigButton>
             ) : (
               <StyledBigButton
-                color="alert"
-                onClick={() => setOpenModal(false)}
+              color="alert"
+              onClick={() => setOpenModal(false)}
               >
                 <ButtonBigText>Fechar</ButtonBigText>
               </StyledBigButton>
             )}
           </div>
-        
+          <SucessMsg />
+        </div>
       </StyledContainer>
     </StyledModal>
   );

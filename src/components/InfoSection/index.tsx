@@ -1,5 +1,4 @@
 import { StyledContainer } from "../../styles/grid";
-import { ContentList } from "../ContentList";
 import { CotaCard } from "./CotaCard";
 import { TempCard } from "./TempCard";
 import { StyledInfos } from "./style";

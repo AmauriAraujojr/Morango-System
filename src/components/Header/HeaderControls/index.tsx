@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect} from "react";
 import { UserContext } from "../../../providers/User.context";
 import { StyledHeaderControls } from "./style";
 import {
@@ -11,7 +10,6 @@ import { GiFarmer } from "react-icons/gi";
 import { UserControls } from "../../UserControls";
 
 export const HeaderControls = () => {
-  const navigate = useNavigate();
 
   const { user,openMenu,setOpenMenu} = useContext(UserContext);
   useEffect(() => {}, [user]);

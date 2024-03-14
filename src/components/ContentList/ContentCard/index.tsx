@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { Idata } from "../../../providers/ContentContext";
 import { StyledContainer } from "../../../styles/grid";
 import {
@@ -7,13 +6,11 @@ import {
 } from "../../../styles/typhography";
 import { CotaCard } from "../../InfoSection/CotaCard";
 import { StyledContentCard } from "./style";
-import { UserContext } from "../../../providers/User.context";
 
 interface ICardProps {
   iten: Idata;
 }
 export const ContentCard = ({ iten }: ICardProps) => {
-  const { user } = useContext(UserContext);
   return (
     <>
       {iten.id != "2" ? (

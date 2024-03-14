@@ -12,7 +12,6 @@ import {
   ButtonBigText,
   HeadingFour600,
 } from "../../../styles/typhography";
-import { GiStrawberry } from "react-icons/gi";
 import { LogoType } from "../../../fragments/Logo";
 
 export interface IRegisterFormData {

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { StyledBigButton } from "../../styles/buttons";
 import { StyledContainer } from "../../styles/grid";
 import {

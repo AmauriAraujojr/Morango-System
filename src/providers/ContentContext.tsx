@@ -1,6 +1,5 @@
 import { Fragment, createContext, useEffect, useState } from "react";
 import { ApiClima } from "../services";
-import { useNavigate } from "react-router-dom";
 
 interface IContentProvider {
   children: React.ReactNode;
@@ -85,9 +84,6 @@ export const ContentProvider = ({ children }: IContentProvider) => {
 
   const [date, setDate] = useState<string>("");
 
-
-
-  const navigate = useNavigate();
 
   const getWeather = async (lat: any, long: any) => {
     try {

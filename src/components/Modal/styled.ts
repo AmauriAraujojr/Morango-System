@@ -14,7 +14,7 @@ export const StyledModal = styled.div`
     width: 100%;
     background-color: var(--color-brand4);
     color:var(--color-grey-10);
-    padding:20px;
+    padding:40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -1,11 +1,11 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { ILoginFormData } from "../components/Forms/LoginForm";
 import { Api } from "../services";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { IRegisterFormData } from "../components/Forms/RegisterForm";
-import { IService } from "./ServicesContext";
+import { IService, ServiceContext } from "./ServicesContext";
 
 interface IUserProvider {
   children: React.ReactNode;
@@ -24,14 +24,14 @@ interface IUser {
   id: number;
   username: string;
   email: string;
-  services:IService[]
+  services: IService[];
 }
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProvider) => {
   const navigate = useNavigate();
-
+  const { setServiceList } = useContext(ServiceContext);
   const [user, setUser] = useState<IUser | null | undefined>();
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -76,6 +76,7 @@ export const UserProvider = ({ children }: IUserProvider) => {
     localStorage.removeItem("@USERID");
     setUser(null);
     navigate("/");
+    setServiceList([]);
   };
 
   const registerUser = async (formdata: IRegisterFormData) => {

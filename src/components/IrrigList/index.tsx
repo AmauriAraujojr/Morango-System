@@ -9,14 +9,9 @@ import {
 } from "../../styles/typhography";
 import { IrrigCard } from "./IrrigCard";
 import { StyledIrrigList } from "./styles";
-import { UserContext } from "../../providers/User.context";
 import { ServiceContext } from "../../providers/ServicesContext";
-import { DiVim } from "react-icons/di";
-import { StyledBigButton } from "../../styles/buttons";
 
 export const IrrigList = () => {
-  const { user } = useContext(UserContext);
-
   const {
     currentPage,
     totalPages,
@@ -24,25 +19,27 @@ export const IrrigList = () => {
     setCardPerPage,
     setTotalPages,
     cardPerPage,
+    serviceList,
+    getServices,
   } = useContext(ServiceContext);
 
-  const filterAnouncementActive = () => {
+  const filterIrrigationsActive = () => {
     const perPage: number = 5;
-
-    const filter = user?.services.filter((an) => {
-      return an.active == false;
-    });
-    if (filter) {
+    if (serviceList) {
       setCardPerPage([
-        ...filter!.slice(perPage * (currentPage - 1), perPage * currentPage),
+        ...serviceList.slice(
+          perPage * (currentPage - 1),
+          perPage * currentPage
+        ),
       ]);
-      setTotalPages(Math.ceil(filter!.length / perPage));
+      setTotalPages(Math.ceil(serviceList.length / perPage));
     }
   };
 
   useEffect(() => {
-    filterAnouncementActive();
-  }, [currentPage, user]);
+    filterIrrigationsActive();
+    getServices();
+  }, [currentPage, serviceList]);
 
   return (
     <StyledContainer>
@@ -51,12 +48,9 @@ export const IrrigList = () => {
           <HeadingThree600>Histórico de Irrigações</HeadingThree600>{" "}
         </div>
 
-        {user?.services.length == 0 ? (
+        {serviceList.length == 0 ? (
           <div className="not">
             <HeadingOne700>Você não ativou nenhuma irrigação</HeadingOne700>{" "}
-            <StyledBigButton color="sucess">
-              <ButtonBigText>Iniciar</ButtonBigText>
-            </StyledBigButton>
           </div>
         ) : (
           <>

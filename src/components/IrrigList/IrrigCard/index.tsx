@@ -52,10 +52,24 @@ export const IrrigCard = ({ service }: IIrrigProps) => {
     let dateOff = new Date(service.turnOff);
 
     let hourOff = "";
-    if (dateOff.getHours() < 10) {
-      hourOff = `0${dateOff.getHours() - 3}`;
+    let hourLocal = dateOff.getHours();
+
+    if (hourLocal == 0) {
+      hourLocal = 24;
+    }
+    if (hourLocal == 1) {
+      hourLocal = 25;
+    }
+    if (hourLocal == 2) {
+      hourLocal = 26;
+    }
+
+    let newHour = hourLocal - 3;
+
+    if (newHour < 10) {
+      hourOff = `0${newHour}`;
     } else {
-      hourOff = String(dateOff.getHours() - 3);
+      hourOff = String(newHour);
     }
 
     let minutesOff = "";

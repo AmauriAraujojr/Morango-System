@@ -13,8 +13,8 @@ import { SucessMsg } from "../../fragments/SucessMsg";
 import { TempCard } from "../InfoSection/TempCard";
 
 export const Modal = () => {
-  const { setOpenModal, active, setActive } = useContext(ServiceContext);
-
+  const { setOpenModal, active, turnOffIrrigations } =
+    useContext(ServiceContext);
 
   return (
     <StyledModal>
@@ -25,18 +25,21 @@ export const Modal = () => {
             Indique o tempo em "minutos" que a irrigação ficará ligada e clique
             em "Ativar"
           </HeadingThree600>
-            <TempCard/>
+          <TempCard />
           <div className="button_box">
             <Timer />
 
             {active ? (
-              <StyledBigButton color="alert" onClick={() => setActive(false)}>
+              <StyledBigButton
+                color="alert"
+                onClick={() => turnOffIrrigations()}
+              >
                 <ButtonBigText>Desativar</ButtonBigText>
               </StyledBigButton>
             ) : (
               <StyledBigButton
-              color="alert"
-              onClick={() => setOpenModal(false)}
+                color="alert"
+                onClick={() => setOpenModal(false)}
               >
                 <ButtonBigText>Fechar</ButtonBigText>
               </StyledBigButton>

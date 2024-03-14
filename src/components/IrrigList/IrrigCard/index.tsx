@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { IService } from "../../../providers/ServicesContext";
+import { useContext, useEffect, useState } from "react";
+import { IService, ServiceContext } from "../../../providers/ServicesContext";
 import { BodyTwo500 } from "../../../styles/typhography";
 import { StyledIrrigCard } from "./styles";
 
@@ -10,6 +10,7 @@ export const IrrigCard = ({ service }: IIrrigProps) => {
   const [date, setDate] = useState("");
   const [on, setOn] = useState("");
   const [off, setOff] = useState("");
+  const [duration, setDuration] = useState("");
 
   const getDate = () => {
     const meses = [
@@ -80,7 +81,18 @@ export const IrrigCard = ({ service }: IIrrigProps) => {
     }
     let hourOffForm = `${hourOff} : ${minutesOff} : ${dateOff.getUTCSeconds()}`;
     setOff(hourOffForm);
+
+    let diferenca = Math.abs(Number(dateOff) - Number(date));
+    let segundos = Math.floor(diferenca / 1000);
+    let minutos = Math.floor(segundos / 60);
+
+    minutos %= 60;
+    segundos %= 60;
+
+    setDuration(minutos + " mim, " + Number(segundos + 1) + " seg");
   };
+
+  const { getTimeSinceSystem } = useContext(ServiceContext);
 
   useEffect(() => {
     getDate();
@@ -88,12 +100,14 @@ export const IrrigCard = ({ service }: IIrrigProps) => {
 
   return (
     <StyledIrrigCard>
-      <BodyTwo500>Data: {date} </BodyTwo500>
-      <BodyTwo500>Horário de ativação: {on}</BodyTwo500>
-      {service.turnOff ? (
-        <BodyTwo500>Horário de desativação: {off}</BodyTwo500>
-      ) : null}
-      <BodyTwo500>Duração: 10 min</BodyTwo500>
+      <div className="date_box">
+        <BodyTwo500>{date} </BodyTwo500>
+        <BodyTwo500>{getTimeSinceSystem(service.turnOn)} </BodyTwo500>
+      </div>
+
+      <BodyTwo500>Ativada às: {on}</BodyTwo500>
+      {service.turnOff ? <BodyTwo500>Desativada às: {off}</BodyTwo500> : null}
+      <BodyTwo500>Duração: {duration}</BodyTwo500>
     </StyledIrrigCard>
   );
 };

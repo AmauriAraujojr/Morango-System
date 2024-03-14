@@ -12,4 +12,9 @@ export const StyledIrrigCard = styled.li`
   padding: 10px;
   border: 1px solid var(--color-brand2);
   box-shadow: 1px 1px 2px 2px var(--color-brand2);
+  .date_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;

@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { StyledContainer } from "../../styles/grid";
 import {
-  ButtonBigText,
   HeadingFive500,
   HeadingFive600,
   HeadingOne700,
@@ -27,7 +26,7 @@ export const IrrigList = () => {
     const perPage: number = 5;
     if (serviceList) {
       setCardPerPage([
-        ...serviceList.slice(
+        ...serviceList.reverse().slice(
           perPage * (currentPage - 1),
           perPage * currentPage
         ),

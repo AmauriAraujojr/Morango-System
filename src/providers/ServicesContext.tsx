@@ -24,6 +24,7 @@ interface IServiceContext {
   serviceList: IService[];
   setServiceList: React.Dispatch<React.SetStateAction<IService[]>>;
   getServices: () => Promise<void>;
+  getTimeSinceSystem: (date: string) => string;
 }
 
 export interface IService {
@@ -112,6 +113,66 @@ export const ServiceProvider = ({ children }: IServiceProvider) => {
     }
   };
 
+  const getTimeSinceSystem = (date: string) => {
+    const currentDate: Date = new Date();
+    const commentDate: Date = new Date(date);
+
+    const secondsDifference = Math.floor(
+      (currentDate.getTime() - commentDate.getTime()) / 1000
+    );
+    if (secondsDifference < 60) {
+      return `há menos de 1 minuto`;
+    }
+
+    const minutesDifference = Math.floor(secondsDifference / 60);
+    if (minutesDifference < 60) {
+      if (minutesDifference == 1) {
+        return `há 1 minuto`;
+      } else {
+        return `há ${minutesDifference} minutos`;
+      }
+    }
+
+    const hoursDifference = Math.floor(minutesDifference / 60);
+    if (hoursDifference < 24) {
+      if (hoursDifference == 1) {
+        return `há 1 hora`;
+      } else {
+        return `há ${hoursDifference} horas`;
+      }
+    }
+
+    const daysDifference = Math.floor(hoursDifference / 24);
+    const monthsDifference =
+      (currentDate.getFullYear() - commentDate.getFullYear()) * 12 +
+      (currentDate.getMonth() - commentDate.getMonth());
+    if (monthsDifference < 1 && daysDifference < 31) {
+      if (daysDifference == 1) {
+        return `há 1 dia`;
+      } else {
+        return `há ${daysDifference} dias`;
+      }
+    }
+
+    if (monthsDifference < 12) {
+      if (monthsDifference == 1) {
+        return `há 1 mês`;
+      } else {
+        return `há ${monthsDifference} meses`;
+      }
+    }
+
+    const yearsDifference =
+      currentDate.getFullYear() - commentDate.getFullYear();
+    if (yearsDifference === 1) {
+      return "há 1 ano";
+    } else if (yearsDifference) {
+      return `há ${yearsDifference} anos`;
+    }
+
+    return "há algum tempo";
+  };
+
   return (
     <ServiceContext.Provider
       value={{
@@ -132,6 +193,7 @@ export const ServiceProvider = ({ children }: IServiceProvider) => {
         serviceList,
         setServiceList,
         getServices,
+        getTimeSinceSystem,
       }}
     >
       {children}

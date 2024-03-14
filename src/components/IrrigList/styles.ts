@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledIrrigList = styled.section`
   width: 100%;
-  /* height: 500px; */
   display: flex;
   flex-direction: column;
   gap: 25px;

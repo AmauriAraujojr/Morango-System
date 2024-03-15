@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const Api=axios.create({
-    baseURL:"http://localhost:8000/api/",
+    baseURL:"https://system-irrigation.onrender.com/api/",
     timeout:8000
 })
 
